@@ -1,0 +1,59 @@
+# agent-guard
+
+A generic-purpose [cli-guard][cli-guard] consumer for repos that take external contributions. Sits between AI agents (or any semi-trusted automation) and the host system, with no maintainer-specific allowlists.
+
+`agent-guard` is to external contributors what [coily][coily] is to Kai's own machines: a thin, audited wrapper around the cli-guard primitives. coily ships personal verbs (homelab SSH, vault paths, deploy hooks). `agent-guard` ships only verbs that make sense to any contributor walking up to a repo cold.
+
+## Status
+
+v0. Not yet wired into any downstream. First adopter target is the urfave/cli namespaced repos ([cli-mcp][cli-mcp], [cli-web-docs][cli-web-docs], [cli-web-ops][cli-web-ops]).
+
+## What it does
+
+Wraps a small, fixed set of dev verbs (`build`, `test`, `vet`, `lint`, `tidy`) behind cli-guard's policy gate. Every invocation:
+
+- validates argv against shell-metacharacter rejection
+- writes one append-only JSONL audit row
+- binds to a git toplevel via `--commit-scope`
+- refuses repo-shaped verbs on a dirty tree
+
+Downstream repos add an `.agent-guard/agent-guard.yaml` listing which Makefile targets are exposed. The contract is verified by `agent-guard lint`.
+
+## Install
+
+Build from source until releases ship:
+
+```
+go install github.com/coilysiren/agent-guard/cmd/agent-guard@latest
+```
+
+## Usage
+
+```
+agent-guard exec build
+agent-guard exec test
+agent-guard lint
+```
+
+See [`docs/`](docs/) for the full verb list and [`examples/`](examples/) for runnable demos.
+
+## Related
+
+- [cli-guard][cli-guard] - the underlying security-boundary framework
+- [coily][coily] - Kai's personal cli-guard consumer
+- Sibling cli-* repos: [cli-mcp][cli-mcp], [cli-web-docs][cli-web-docs], [cli-web-ops][cli-web-ops]
+
+## Support
+
+If you found a bug or have a feature request, [create a new issue][new-issue]. Participation is governed by the [Code of Conduct](CODE_OF_CONDUCT.md). Security disclosures go through [SECURITY.md](SECURITY.md).
+
+### License
+
+See [`LICENSE`](./LICENSE).
+
+[cli-guard]: https://github.com/coilysiren/cli-guard
+[coily]: https://github.com/coilysiren/coily
+[cli-mcp]: https://github.com/coilysiren/cli-mcp
+[cli-web-docs]: https://github.com/coilysiren/cli-web-docs
+[cli-web-ops]: https://github.com/coilysiren/cli-web-ops
+[new-issue]: https://github.com/coilysiren/agent-guard/issues/new/choose
