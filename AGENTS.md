@@ -1,6 +1,6 @@
 # Agent instructions
 
-Workspace-level conventions (git workflow, test/lint autonomy, readonly ops, writing voice) are loaded globally via `~/.claude/CLAUDE.md` → `coilyco-ai/AGENTS.md`. This file covers only what's specific to this repo.
+Workspace-level conventions (git workflow, test/lint autonomy, readonly ops, writing voice) are loaded globally via `~/.claude/CLAUDE.md` → `agentic-os-kai/AGENTS.md`. This file covers only what's specific to this repo.
 
 ## What agent-guard is
 
