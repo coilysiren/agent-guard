@@ -79,11 +79,7 @@ Or hand-roll the entry:
 
 ## Support
 
-If you found a bug or have a feature request, [create a new issue][new-issue]. Participation is governed by the [Code of Conduct](CODE_OF_CONDUCT.md). Security disclosures go through [SECURITY.md](SECURITY.md).
-
-### License
-
-See [`LICENSE`](./LICENSE).
+Bug or feature request: [create a new issue][new-issue]. Conduct: [Code of Conduct](CODE_OF_CONDUCT.md). Security: [SECURITY.md](SECURITY.md). License: [`LICENSE`](./LICENSE).
 
 [cli-guard]: https://github.com/coilysiren/cli-guard
 [coily]: https://github.com/coilysiren/coily
@@ -91,3 +87,11 @@ See [`LICENSE`](./LICENSE).
 [cli-web-docs]: https://github.com/coilysiren/cli-web-docs
 [cli-web-ops]: https://github.com/coilysiren/cli-web-ops
 [new-issue]: https://github.com/coilysiren/agent-guard/issues/new/choose
+
+## See also
+
+- [AGENTS.md](AGENTS.md) - agent-facing operating rules.
+- [docs/FEATURES.md](docs/FEATURES.md) - inventory of what ships today.
+- [.agent-guard/agent-guard.yaml](.agent-guard/agent-guard.yaml) - allowlisted commands.
+
+Cross-reference convention from [coilysiren/agentic-os#59](https://github.com/coilysiren/agentic-os/issues/59).

@@ -32,3 +32,11 @@ v0.x. Minor API breaks ship in `main` with a note in the commit body. Consumers 
 ## Filing issues
 
 One issue per discrete additive change. Every commit closes a same-repo issue with `closes #N`.
+
+## See also
+
+- [README.md](README.md) - human-facing intro.
+- [docs/FEATURES.md](docs/FEATURES.md) - inventory of what ships today.
+- [.agent-guard/agent-guard.yaml](.agent-guard/agent-guard.yaml) - allowlisted commands.
+
+Cross-reference convention from [coilysiren/agentic-os#59](https://github.com/coilysiren/agentic-os/issues/59).
