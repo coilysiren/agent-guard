@@ -21,11 +21,12 @@ Downstream repos add an `.agent-guard/agent-guard.yaml` listing which Makefile t
 
 ## Install
 
-Build from source until releases ship:
+```
+brew tap coilysiren/agent-guard https://github.com/coilysiren/agent-guard
+brew install coilysiren/agent-guard/agent-guard
+```
 
-```
-go install github.com/coilysiren/agent-guard/cmd/agent-guard@latest
-```
+The explicit-URL `brew tap` form is required because this repo isn't `homebrew-*` prefixed.
 
 ## Usage
 

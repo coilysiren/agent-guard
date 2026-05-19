@@ -15,7 +15,7 @@ The boundary between agent-guard and coily is the load-bearing design choice. Tw
 
 ## Dev verbs
 
-agent-guard dogfoods itself. Once installed (`brew install coilysiren/tap/agent-guard`), route through it, not bare go:
+agent-guard dogfoods itself. Once installed (`brew tap coilysiren/agent-guard https://github.com/coilysiren/agent-guard && brew install coilysiren/agent-guard/agent-guard`), route through it, not bare go:
 
 - `agent-guard exec build`
 - `agent-guard exec test`
@@ -32,6 +32,14 @@ v0.x. Minor API breaks ship in `main` with a note in the commit body. Consumers 
 ## Filing issues
 
 One issue per discrete additive change. Every commit closes a same-repo issue with `closes #N`.
+
+## Release + post-push
+
+Push to `main` -> `.github/workflows/release.yml`: `mathieudutour/github-tag-action` computes semver (`default_bump: patch`, conventional commits drive minor/major), tags + cuts a GH Release, then `bump-formula` rewrites the formula's url+tag+revision line via the Contents API and pushes it back to main with a skip-CI marker. No tap dispatch. `Formula/agent-guard.rb` is the source of truth here; brew picks up the new tag from this repo on the next `brew upgrade`.
+
+Never write the literal skip-CI token in a commit message body or you'll silently disable the release workflow on that push. GitHub greps the entire message, not just the subject line. Quote it as "skip-CI marker" or "skip CI" without brackets if you need to describe it.
+
+Post-push: verify CI at +120s (`coily ops gh run list --repo coilysiren/agent-guard --limit 1`). Once `completed/success`: `brew upgrade coilysiren/agent-guard/agent-guard`.
 
 ## See also
 
